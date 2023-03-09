@@ -4,7 +4,7 @@
     <div class="box">
         <div class="box-header with-action">
             <h3 class="box-title">Blog List</h3>
-            <a href="{{ route('blog.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a>
+            {{-- <a href="{{ route('blog.create') }}" class="btn btn-sm btn-secondary float-right">Create new</a> --}}
         </div>
         <div class="box-body">
             <table class="table table-bordered table-hover table-responsive-lg">

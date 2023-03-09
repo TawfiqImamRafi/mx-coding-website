@@ -31,22 +31,18 @@ Route::get('register', function () {
 });
 
 Route::get('home', function () {
-    return redirect('dashboard');
+    return redirect('admin');
 });
 
 Route::get('admin', function () {
-    return redirect('dashboard');
+    return redirect('admin');
 });
 
-Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function ($router) {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
     $router->get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
-    $router->group(['prefix' => 'blog'], function ($router) {
-        $router->get('/', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('blog.list');
-        $router->get('/create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('blog.create');
-        $router->post('/create', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('blog.store');
-        $router->get('/edit/{id}', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('blog.edit');
-        $router->put('/edit/{id}', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('blog.update');
-        $router->delete('/destroy/{id}', [App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('blog.destroy');
+    $router->group(['prefix' => 'about-us', 'as' => 'about-us.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\AboutUsController::class, 'index'])->name('index');
+        $router->post('/store', [App\Http\Controllers\Admin\AboutUsController::class, 'store'])->name('store');
     });
 });

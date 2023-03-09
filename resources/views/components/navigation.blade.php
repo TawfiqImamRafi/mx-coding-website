@@ -27,11 +27,11 @@
             </ul>
         </li>
 
-        
+
         <li>
-            <a href="#" class="dashboard">
+            <a href="{{ route('about-us.index') }}" class="dashboard">
                 <i class="bx bxs-envelope-open"></i>
-                <span>Contact List</span>
+                <span>About Us</span>
             </a>
         </li>
     </ul>
