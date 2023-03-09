@@ -14,7 +14,7 @@
                 <label for="" class="col-md-3 col-form-label"></label>
                 <div class="col-md-9">
                     <center>
-                        <img style="width: 20%;border: 1px solid; border-radius: 10px;" id="viewer" onerror="this.src='{{ asset('assets/frontend/img/img2.jpg')}}'" src="{{asset('storage/app/public/page')}}/{{$data['image']}}" alt="about image"/>
+                        <img style="width: 20%;border: 1px solid; border-radius: 10px;" id="viewer" onerror="this.src='{{ asset('assets/frontend/img/img2.jpg')}}'" src="{{asset($data['image'])}}" alt="about image"/>
                     </center>
                 </div>
             </div>

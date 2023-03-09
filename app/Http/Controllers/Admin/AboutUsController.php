@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AboutUsController extends Controller
 {
@@ -39,14 +40,15 @@ class AboutUsController extends Controller
 
         $about_us = Page::where(['title' => 'about_us'])->first();
         if ($request->has('image')) {
-            $image_name = Helpers::update('page/', $about_us->image, 'png', $request->file('image'));
-        } else {
-            $image_name = $about_us['image'];
+            if ($about_us->image) {
+                unlink($about_us->image);
+            }
+            $path = Helpers::file_upload($request,'image','page');
         }
 
         DB::table('pages')->updateOrInsert(['title' => 'about_us'], [
             'content' => $request->get('content'),
-            'image' => $image_name,
+            'image' => $path,
         ]);
 
         return response()->json([

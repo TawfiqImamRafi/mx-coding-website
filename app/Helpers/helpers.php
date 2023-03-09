@@ -35,5 +35,22 @@ class Helpers
             return $imageName;
         }
     }
+
+    public static function file_upload($request, $file_name, $upload_dir)
+    {
+        if ($request->hasFile($file_name)) {
+            $file = $request->$file_name;
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $up_path = "uploads/".date('Y-m')."/$upload_dir/";
+            $path = $file->move($up_path, $filename);
+            if ($file->getError()) {
+                $request->session()->flash('warning', $file->getErrorMessage());
+
+                return false;
+            }
+
+            return $path;
+        }
+    }
 }
 
