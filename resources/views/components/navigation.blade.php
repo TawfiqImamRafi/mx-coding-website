@@ -13,13 +13,13 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="#">
+                    <a href="{{ route('service.list') }}">
                         <i class="bx bx-check-circle"></i>
                         <span>All Services</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('service.create') }}">
                         <i class="bx bx-check-circle"></i>
                         <span>Add Service</span>
                     </a>
@@ -32,6 +32,18 @@
             <a href="{{ route('about-us.index') }}" class="dashboard">
                 <i class="bx bxs-envelope-open"></i>
                 <span>About Us</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('privacy-policy.index') }}" class="dashboard">
+                <i class="bx bxs-envelope-open"></i>
+                <span>Privacy & Policy</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('terms-condition.index') }}" class="dashboard">
+                <i class="bx bxs-envelope-open"></i>
+                <span>Terms & Condition</span>
             </a>
         </li>
     </ul>

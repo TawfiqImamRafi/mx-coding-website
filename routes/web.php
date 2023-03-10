@@ -45,4 +45,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\AboutUsController::class, 'index'])->name('index');
         $router->post('/store', [App\Http\Controllers\Admin\AboutUsController::class, 'store'])->name('store');
     });
+
+    $router->group(['prefix' => 'privacy-policy', 'as' => 'privacy-policy.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\PrivacyPolicyController::class, 'index'])->name('index');
+        $router->post('/store', [App\Http\Controllers\Admin\PrivacyPolicyController::class, 'store'])->name('store');
+    });
+
+    $router->group(['prefix' => 'terms-condition', 'as' => 'terms-condition.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\TermsConditionController::class, 'index'])->name('index');
+        $router->post('/store', [App\Http\Controllers\Admin\TermsConditionController::class, 'store'])->name('store');
+    });
+
+    $router->group(['prefix' => 'service', 'as' => 'service.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('list');
+        $router->get('/create', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('create');
+        $router->post('/create', [App\Http\Controllers\Admin\ServiceController::class, 'store'])->name('store');
+        $router->get('/edit/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('edit');
+        $router->put('/edit/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('update');
+        $router->delete('/destroy/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('destroy');
+    });
 });

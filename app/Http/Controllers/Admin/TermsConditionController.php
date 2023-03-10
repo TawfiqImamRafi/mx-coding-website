@@ -9,25 +9,25 @@ use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class AboutUsController extends Controller
+class TermsConditionController extends Controller
 {
     public function index()
     {
-        $page = Page::where(['title' => 'about_us'])->first();
+        $page = Page::where(['title' => 'terms_condition'])->first();
         if ($page == false) {
             $page = [
-                'title' => 'about_us',
+                'title' => 'terms_condition',
             ];
             Page::insert($page);
-            $page = Page::where(['title' => 'about_us'])->first();
+            $page = Page::where(['title' => 'terms_condition'])->first();
         }
 
         $data = [
-            'page_title' => 'About Us',
+            'page_title' => 'Terms & Condition',
             'data' => $page
         ];
 
-        return view('dashboard.about-us.index')->with(array_merge($this->data, $data));
+        return view('dashboard.terms-condition.index')->with(array_merge($this->data, $data));
     }
 
     public function store(Request $request)
@@ -39,15 +39,15 @@ class AboutUsController extends Controller
         //validation
         $this->validate($request, $rules);
 
-        $about_us = Page::where(['title' => 'about_us'])->first();
+        $terms_condition = Page::where(['title' => 'terms_condition'])->first();
         if ($request->has('image')) {
-            if (isset($about_us) && $about_us->image) {
-                unlink($about_us->image);
+            if (isset($terms_condition) && $terms_condition->image) {
+                unlink($terms_condition->image);
             }
             $path = Helpers::file_upload($request,'image','page');
         }
 
-        DB::table('pages')->updateOrInsert(['title' => 'about_us'], [
+        DB::table('pages')->updateOrInsert(['title' => 'terms_condition'], [
             'content' => $request->get('content'),
             'image' => $path,
         ]);
@@ -55,8 +55,8 @@ class AboutUsController extends Controller
         return response()->json([
             'type' => 'success',
             'title' => 'Success',
-            'message' => 'About Us saved successfully',
-            'redirect' => route('about-us.index')
+            'message' => 'Terms & Condition saved successfully',
+            'redirect' => route('terms-condition.index')
         ]);
     }
 }

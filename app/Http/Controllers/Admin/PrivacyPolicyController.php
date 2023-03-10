@@ -9,25 +9,25 @@ use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class AboutUsController extends Controller
+class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $page = Page::where(['title' => 'about_us'])->first();
+        $page = Page::where(['title' => 'privacy_policy'])->first();
         if ($page == false) {
             $page = [
-                'title' => 'about_us',
+                'title' => 'privacy_policy',
             ];
             Page::insert($page);
-            $page = Page::where(['title' => 'about_us'])->first();
+            $page = Page::where(['title' => 'privacy_policy'])->first();
         }
 
         $data = [
-            'page_title' => 'About Us',
+            'page_title' => 'Privacy & Policy',
             'data' => $page
         ];
 
-        return view('dashboard.about-us.index')->with(array_merge($this->data, $data));
+        return view('dashboard.privacy-policy.index')->with(array_merge($this->data, $data));
     }
 
     public function store(Request $request)
@@ -39,15 +39,15 @@ class AboutUsController extends Controller
         //validation
         $this->validate($request, $rules);
 
-        $about_us = Page::where(['title' => 'about_us'])->first();
+        $privacy_policy = Page::where(['title' => 'privacy_policy'])->first();
         if ($request->has('image')) {
-            if (isset($about_us) && $about_us->image) {
-                unlink($about_us->image);
+            if (isset($privacy_policy) && $privacy_policy->image) {
+                unlink($privacy_policy->image);
             }
             $path = Helpers::file_upload($request,'image','page');
         }
 
-        DB::table('pages')->updateOrInsert(['title' => 'about_us'], [
+        DB::table('pages')->updateOrInsert(['title' => 'privacy_policy'], [
             'content' => $request->get('content'),
             'image' => $path,
         ]);
@@ -55,8 +55,8 @@ class AboutUsController extends Controller
         return response()->json([
             'type' => 'success',
             'title' => 'Success',
-            'message' => 'About Us saved successfully',
-            'redirect' => route('about-us.index')
+            'message' => 'Privacy & Policy saved successfully',
+            'redirect' => route('privacy-policy.index')
         ]);
     }
 }

@@ -4,9 +4,9 @@
 
     <div class="box">
         <div class="box-header with-action">
-            <h5 class="box-title">About Us Page</h5>
+            <h5 class="box-title">Privacy & Policy Page</h5>
         </div>
-        {!! Form::open(['route' => ['about-us.store'], 'method' => 'POST']) !!}
+        {!! Form::open(['route' => ['privacy-policy.store'], 'method' => 'POST']) !!}
         <div class="box-body">
             <div class="form-group" style="margin-bottom:0%;">
             </div>
@@ -14,7 +14,7 @@
                 <label for="" class="col-md-3 col-form-label"></label>
                 <div class="col-md-9">
                     <center>
-                        <img style="width: 20%;border: 1px solid; border-radius: 10px;" id="viewer" src="{{asset($data['image'])}}" onerror="this.src='{{ asset('assets/frontend/img/img2.jpg')}}'" alt="about image"/>
+                        <img style="width: 20%;border: 1px solid; border-radius: 10px;" id="viewer" src="{{asset($data['image'])}}" onerror="this.src='{{ asset('assets/frontend/img/img2.jpg')}}'" alt="privacy image"/>
                     </center>
                 </div>
             </div>
