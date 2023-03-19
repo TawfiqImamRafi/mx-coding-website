@@ -9,25 +9,25 @@ use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class TermsConditionController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
-        $page = Page::where(['type' => 'terms_condition'])->first();
+        $page = Page::where(['type' => 'home'])->first();
         if ($page == false) {
             $page = [
-                'type' => 'terms_condition',
+                'type' => 'home',
             ];
             Page::insert($page);
-            $page = Page::where(['type' => 'terms_condition'])->first();
+            $page = Page::where(['type' => 'home'])->first();
         }
 
         $data = [
-            'page_title' => 'Terms & Condition',
+            'page_title' => 'Home',
             'data' => $page
         ];
 
-        return view('dashboard.terms-condition.index')->with(array_merge($this->data, $data));
+        return view('dashboard.home.index')->with(array_merge($this->data, $data));
     }
 
     public function store(Request $request)
@@ -39,15 +39,16 @@ class TermsConditionController extends Controller
         //validation
         $this->validate($request, $rules);
 
-        $terms_condition = Page::where(['type' => 'terms_condition'])->first();
+        $home = Page::where(['type' => 'home'])->first();
         if ($request->has('image')) {
-            if (isset($terms_condition) && $terms_condition->image) {
-                unlink($terms_condition->image);
+            if (isset($home) && $home->image) {
+                unlink($home->image);
             }
             $path = Helpers::file_upload($request,'image','page');
         }
 
-        DB::table('pages')->updateOrInsert(['type' => 'terms_condition'], [
+        DB::table('pages')->updateOrInsert(['type' => 'home'], [
+            'title' => $request->get('title'),
             'content' => $request->get('content'),
             'image' => $path,
         ]);
@@ -55,8 +56,8 @@ class TermsConditionController extends Controller
         return response()->json([
             'type' => 'success',
             'title' => 'Success',
-            'message' => 'Terms & Condition saved successfully',
-            'redirect' => route('terms-condition.index')
+            'message' => 'Home saved successfully',
+            'redirect' => route('home.index')
         ]);
     }
 }

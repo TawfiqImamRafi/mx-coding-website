@@ -13,13 +13,13 @@ class AboutUsController extends Controller
 {
     public function index()
     {
-        $page = Page::where(['title' => 'about_us'])->first();
+        $page = Page::where(['type' => 'about_us'])->first();
         if ($page == false) {
             $page = [
-                'title' => 'about_us',
+                'type' => 'about_us',
             ];
             Page::insert($page);
-            $page = Page::where(['title' => 'about_us'])->first();
+            $page = Page::where(['type' => 'about_us'])->first();
         }
 
         $data = [
@@ -39,7 +39,7 @@ class AboutUsController extends Controller
         //validation
         $this->validate($request, $rules);
 
-        $about_us = Page::where(['title' => 'about_us'])->first();
+        $about_us = Page::where(['type' => 'about_us'])->first();
         if ($request->has('image')) {
             if (isset($about_us) && $about_us->image) {
                 unlink($about_us->image);
@@ -47,7 +47,8 @@ class AboutUsController extends Controller
             $path = Helpers::file_upload($request,'image','page');
         }
 
-        DB::table('pages')->updateOrInsert(['title' => 'about_us'], [
+        DB::table('pages')->updateOrInsert(['type' => 'about_us'], [
+            'title' => $request->get('title'),
             'content' => $request->get('content'),
             'image' => $path,
         ]);

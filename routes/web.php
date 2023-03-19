@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','App\Http\Controllers\FrontendController@index');
-Route::get('/privacy','App\Http\Controllers\FrontendController@privacy');
-Route::get('/terms','App\Http\Controllers\FrontendController@terms');
+Route::get('/','App\Http\Controllers\FrontendController@index')->name('home');
+Route::get('/privacy-policy','App\Http\Controllers\FrontendController@privacy')->name('privacy');
+Route::get('/terms-condition','App\Http\Controllers\FrontendController@terms')->name('terms');
+Route::get('/about-us','App\Http\Controllers\FrontendController@about')->name('about-us');
+Route::get('/services','App\Http\Controllers\FrontendController@services')->name('services');
+Route::get('/courses','App\Http\Controllers\FrontendController@courses')->name('courses');
+Route::get('/contact','App\Http\Controllers\FrontendController@contact')->name('contact');
 Route::get('locale/{locale}','App\Http\Controllers\FrontendController@switch');
 
 Route::get('/admin', function () {
@@ -41,6 +45,11 @@ Route::get('admin', function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
     $router->get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
+    $router->group(['prefix' => 'home', 'as' => 'home.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('index');
+        $router->post('/store', [App\Http\Controllers\Admin\HomeController::class, 'store'])->name('store');
+    });
+
     $router->group(['prefix' => 'about-us', 'as' => 'about-us.'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\AboutUsController::class, 'index'])->name('index');
         $router->post('/store', [App\Http\Controllers\Admin\AboutUsController::class, 'store'])->name('store');
@@ -63,5 +72,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
         $router->get('/edit/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'edit'])->name('edit');
         $router->put('/edit/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'update'])->name('update');
         $router->delete('/destroy/{slug}', [App\Http\Controllers\Admin\ServiceController::class, 'destroy'])->name('destroy');
+    });
+
+    $router->group(['prefix' => 'course', 'as' => 'course.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('list');
+        $router->get('/create', [App\Http\Controllers\Admin\CourseController::class, 'create'])->name('create');
+        $router->post('/create', [App\Http\Controllers\Admin\CourseController::class, 'store'])->name('store');
+        $router->get('/edit/{slug}', [App\Http\Controllers\Admin\CourseController::class, 'edit'])->name('edit');
+        $router->put('/edit/{slug}', [App\Http\Controllers\Admin\CourseController::class, 'update'])->name('update');
+        $router->delete('/destroy/{slug}', [App\Http\Controllers\Admin\CourseController::class, 'destroy'])->name('destroy');
     });
 });

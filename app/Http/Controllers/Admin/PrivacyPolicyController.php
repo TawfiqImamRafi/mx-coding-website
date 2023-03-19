@@ -13,13 +13,13 @@ class PrivacyPolicyController extends Controller
 {
     public function index()
     {
-        $page = Page::where(['title' => 'privacy_policy'])->first();
+        $page = Page::where(['type' => 'privacy_policy'])->first();
         if ($page == false) {
             $page = [
-                'title' => 'privacy_policy',
+                'type' => 'privacy_policy',
             ];
             Page::insert($page);
-            $page = Page::where(['title' => 'privacy_policy'])->first();
+            $page = Page::where(['type' => 'privacy_policy'])->first();
         }
 
         $data = [
@@ -39,7 +39,7 @@ class PrivacyPolicyController extends Controller
         //validation
         $this->validate($request, $rules);
 
-        $privacy_policy = Page::where(['title' => 'privacy_policy'])->first();
+        $privacy_policy = Page::where(['type' => 'privacy_policy'])->first();
         if ($request->has('image')) {
             if (isset($privacy_policy) && $privacy_policy->image) {
                 unlink($privacy_policy->image);
@@ -47,7 +47,7 @@ class PrivacyPolicyController extends Controller
             $path = Helpers::file_upload($request,'image','page');
         }
 
-        DB::table('pages')->updateOrInsert(['title' => 'privacy_policy'], [
+        DB::table('pages')->updateOrInsert(['type' => 'privacy_policy'], [
             'content' => $request->get('content'),
             'image' => $path,
         ]);

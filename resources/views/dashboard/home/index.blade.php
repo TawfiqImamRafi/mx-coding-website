@@ -4,9 +4,9 @@
 
     <div class="box">
         <div class="box-header with-action">
-            <h5 class="box-title">About Us Page</h5>
+            <h5 class="box-title">Home Page</h5>
         </div>
-        {!! Form::open(['route' => ['about-us.store'], 'method' => 'POST']) !!}
+        {!! Form::open(['route' => ['home.store'], 'method' => 'POST']) !!}
         <div class="box-body">
             <div class="form-group" style="margin-bottom:0%;">
             </div>
