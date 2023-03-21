@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,8 +17,9 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->data = [
-            'page_title' => 'Tea Process',
-            'page_header' => 'Tea Process',
+            'page_title' => 'Mx-Coding',
+            'page_header' => 'Mx-Coding',
+            'course_footers' => Course::limit(6)->get(),
         ];
     }
 }

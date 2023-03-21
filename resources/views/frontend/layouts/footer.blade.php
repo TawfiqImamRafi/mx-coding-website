@@ -17,34 +17,24 @@
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Popular Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
+                        <a class="btn btn-link" href="{{ route('about-us') }}">About Us</a>
+                        <a class="btn btn-link" href="{{ route('contact') }}">Contact Us</a>
+                        <a class="btn btn-link" href="{{ route('privacy') }}">Privacy Policy</a>
+                        <a class="btn btn-link" href="{{ route('terms') }}">Terms & Condition</a>
+                        {{-- <a class="btn btn-link" href="">Career</a> --}}
                     </div>
                     <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Project Gallery</h5>
+                        <h5 class="text-white mb-4">Courses</h5>
+                        @if ($course_footers)
                         <div class="row g-2">
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-1.jpg')}}" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-2.jpg')}}" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-3.jpg')}}" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-4.jpg')}}" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-5.jpg')}}" alt="Image">
-                            </div>
-                            <div class="col-4">
-                                <img class="img-fluid" src="{{ asset('assets/frontend/img/portfolio-6.jpg')}}" alt="Image">
-                            </div>
+                            @foreach ($course_footers as $key => $course)
+
+                            <a class="col-4" href="#">
+                                <img class="img-fluid" src="{{ asset($course->image)}}" alt="Image">
+                            </a>
+                            @endforeach
                         </div>
+                        @endif
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <h5 class="text-white mb-4">Newsletter</h5>
