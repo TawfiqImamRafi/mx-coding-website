@@ -65,6 +65,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
         $router->post('/store', [App\Http\Controllers\Admin\TermsConditionController::class, 'store'])->name('store');
     });
 
+    $router->group(['prefix' => 'settings', 'as' => 'settings.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\SiteSettingsController::class, 'index'])->name('index');
+        $router->post('/store', [App\Http\Controllers\Admin\SiteSettingsController::class, 'store'])->name('store');
+    });
+
     $router->group(['prefix' => 'service', 'as' => 'service.'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('list');
         $router->get('/create', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('create');

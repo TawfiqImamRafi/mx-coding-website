@@ -55,10 +55,10 @@
         </div>
         <div class="d-flex align-items-center">
             <a class="btn btn-primary rounded-pill px-4 me-3" href="{{ route('about-us') }}">Read More</a>
-            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-outline-primary btn-square me-3" href=""><i class="fab fa-instagram"></i></a>
-            <a class="btn btn-outline-primary btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-primary btn-square me-3" href="{{ $settings?$settings->facebook:'' }}"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-primary btn-square me-3" href="{{ $settings?$settings->twitter:'' }}"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-primary btn-square me-3" href="{{ $settings?$settings->instagram:'' }}"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-outline-primary btn-square" href="{{ $settings?$settings->linkedin:'' }}"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </div>

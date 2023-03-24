@@ -16,7 +16,7 @@ class SiteSettingsController extends Controller
         $settings = SiteSettings::first();
         if ($settings == false) {
             $settings = [
-                'type' => 'about_us',
+                'type' => 'site_settings',
             ];
             SiteSettings::insert($settings);
             $settings = SiteSettings::first();
@@ -32,25 +32,33 @@ class SiteSettingsController extends Controller
 
     public function store(Request $request)
     {
-        $about_us = Page::where(['type' => 'about_us'])->first();
-        if ($request->has('image')) {
-            if (isset($about_us) && $about_us->image) {
-                unlink($about_us->image);
+        $site_settings = SiteSettings::where(['type' => 'site_settings'])->first();
+        if ($request->has('logo')) {
+            if (isset($site_settings) && $site_settings->logo) {
+                unlink($site_settings->logo);
             }
-            $path = Helpers::file_upload($request,'image','page');
+            $path = Helpers::file_upload($request,'logo','site_settings');
         }
 
-        DB::table('pages')->updateOrInsert(['type' => 'about_us'], [
-            'title' => $request->get('title'),
-            'content' => $request->get('content'),
-            'image' => $path,
+        DB::table('site_settings')->updateOrInsert(['type' => 'site_settings'], [
+            'address' => $request->get('address'),
+            'phone' => $request->get('phone'),
+            'email' => $request->get('email'),
+            'facebook' => $request->get('facebook'),
+            'instagram' => $request->get('instagram'),
+            'twitter' => $request->get('twitter'),
+            'linkedin' => $request->get('linkedin'),
+            'youtube' => $request->get('youtube'),
+            'footer_text' => $request->get('footer_text'),
+            'footer_link' => $request->get('footer_link'),
+            'logo' => $path,
         ]);
 
         return response()->json([
             'type' => 'success',
             'title' => 'Success',
-            'message' => 'About Us saved successfully',
-            'redirect' => route('about-us.index')
+            'message' => 'Site settings saved successfully',
+            'redirect' => route('settings.index')
         ]);
     }
 }

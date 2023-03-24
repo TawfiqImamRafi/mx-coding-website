@@ -72,5 +72,11 @@
                 <span>Terms & Condition</span>
             </a>
         </li>
+        <li>
+            <a href="{{ route('settings.index') }}" class="dashboard">
+                <i class="bx bxs-envelope-open"></i>
+                <span>Site Settings</span>
+            </a>
+        </li>
     </ul>
 </nav>

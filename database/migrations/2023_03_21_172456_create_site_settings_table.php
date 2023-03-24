@@ -26,6 +26,7 @@ class CreateSiteSettingsTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('footer_text')->nullable();
             $table->string('footer_link')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

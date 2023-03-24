@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\SiteSettings;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,6 +21,7 @@ class Controller extends BaseController
             'page_title' => 'Mx-Coding',
             'page_header' => 'Mx-Coding',
             'course_footers' => Course::limit(6)->get(),
+            'settings' => SiteSettings::first(),
         ];
     }
 }
