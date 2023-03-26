@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Message;
+use App\Models\Newsletter;
 use App\Models\Page;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -63,6 +65,15 @@ class FrontendController extends Controller
 
         return view('frontend.services')->with(array_merge($this->data, $data));
     }
+    public function serviceDetails($slug)
+    {
+        $data = [
+            'page_title' => 'service Details',
+            'service' => Service::where('slug',$slug)->first()
+        ];
+
+        return view('frontend.service-details')->with(array_merge($this->data, $data));
+    }
     public function courses()
     {
         $data = [
@@ -72,6 +83,15 @@ class FrontendController extends Controller
 
         return view('frontend.courses')->with(array_merge($this->data, $data));
     }
+    public function courseDetails($slug)
+    {
+        $data = [
+            'page_title' => 'Course Details',
+            'course' => Course::where('slug',$slug)->first()
+        ];
+
+        return view('frontend.course-details')->with(array_merge($this->data, $data));
+    }
     public function contact()
     {
         $data = [
@@ -79,6 +99,61 @@ class FrontendController extends Controller
         ];
 
         return view('frontend.contact')->with(array_merge($this->data, $data));
+    }
+
+    public function contactStore(Request $request)
+    {
+        $message = new Message();
+        $message->name = $request->get('name');
+        $message->email = $request->get('email');
+        $message->subject = $request->get('subject');
+        $message->message = $request->get('message');
+
+
+        if ($message->save()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Success',
+                'message' => 'Message sent successfully',
+                'redirect' => route('contact')
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'warning',
+            'title' => 'Failed',
+            'message' => 'Message failed to send'
+        ]);
+    }
+
+    public function newsletterStore(Request $request)
+    {
+        $user = Newsletter::where('email',$request->email)->first();
+        if($user){
+            return response()->json([
+                'type' => 'warning',
+                'title' => 'Failed',
+                'message' => 'Already Subscribed.'
+            ]);
+        }
+        
+        $message = new Newsletter();
+        $message->email = $request->get('email');
+
+
+        if ($message->save()) {
+            return response()->json([
+                'type' => 'success',
+                'title' => 'Success',
+                'message' => 'Subscribed Successfully',
+            ]);
+        }
+
+        return response()->json([
+            'type' => 'warning',
+            'title' => 'Failed',
+            'message' => 'Failed to subscribe'
+        ]);
     }
 
     public function switch(Request $request, $locale)

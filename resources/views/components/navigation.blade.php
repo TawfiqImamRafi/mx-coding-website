@@ -73,6 +73,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('subscribers.index') }}" class="dashboard">
+                <i class="bx bxs-envelope-open"></i>
+                <span>Subscribers</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('settings.index') }}" class="dashboard">
                 <i class="bx bxs-envelope-open"></i>
                 <span>Site Settings</span>

@@ -19,7 +19,7 @@ ul, ol {
 }
 
 a {
-    color: #db0606;
+    color: #0f596b;
     text-decoration: none;
     -webkit-transition: 200ms;
     transition: 200ms;
@@ -27,7 +27,7 @@ a {
 
 a:hover {
     text-decoration: underline;
-    color: #c40c0c;
+    color: #0a404d;
     -webkit-transition: 300ms;
     transition: 300ms;
 }
@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    color: #002339;
+    color: #001127;
 }
 
 img {
@@ -83,37 +83,37 @@ input[type=number] {
 h1 {
     font-size: 30px;
     font-weight: 700;
-    color: #002339;
+    color: #001127;
 }
 
 h2 {
     font-size: 25px;
     font-weight: 600;
-    color: #002339;
+    color: #001127;
 }
 
 h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #002339;
+    color: #001127;
 }
 
 h4 {
     font-size: 18px;
     font-weight: 600;
-    color: #002339;
+    color: #001127;
 }
 
 h5 {
     font-size: 16px;
     font-weight: 600;
-    color: #002339;
+    color: #001127;
 }
 
 h6 {
     font-size: 14px;
     font-weight: 600;
-    color: #002339;
+    color: #001127;
 }
 
 .dflex-end-center {
@@ -166,12 +166,12 @@ h6 {
 }
 
 .btn-primary {
-    background-color: #db0606;
+    background-color: #0f596b;
     color: #ffffff;
 }
 
 .btn-secondary {
-    background-color: #002339;
+    background-color: #001127;
     color: #ffffff;
 }
 
@@ -202,7 +202,7 @@ h6 {
 .sk-cube-grid .sk-cube {
     width: 33%;
     height: 33%;
-    background-color: #db0606;
+    background-color: #0f596b;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
@@ -281,7 +281,7 @@ form .form-group {
 
 form .form-group label {
     font-weight: 500;
-    color: #002339;
+    color: #001127;
     margin-bottom: 5px;
 }
 
@@ -296,7 +296,7 @@ form .form-group .form-control {
 form .form-group .form-control:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-color: #002339;
+    border-color: #001127;
 }
 
 form .form-group .form-control::-webkit-input-placeholder {
@@ -331,7 +331,7 @@ form .form-section-title {
 }
 
 .datepicker .datepicker-days .datepicker-title {
-    color: #db0606;
+    color: #0f596b;
 }
 
 .datepicker .datepicker-days .prev, .datepicker .datepicker-days .next {
@@ -339,13 +339,13 @@ form .form-section-title {
 }
 
 .datepicker .datepicker-days .datepicker-switch {
-    color: #db0606;
+    color: #0f596b;
 }
 
 .datepicker .datepicker-days .dow {
     padding: 5px 7px;
     font-weight: 500;
-    color: #002339;
+    color: #001127;
     border-radius: 0px !important;
 }
 
@@ -359,7 +359,7 @@ form .form-section-title {
 }
 
 .datepicker .datepicker-days .day.today {
-    background: #002339 !important;
+    background: #001127 !important;
     color: #fff !important;
 }
 
@@ -369,7 +369,7 @@ form .form-section-title {
 }
 
 .datepicker .datepicker-days .day.active {
-    background: #db0606 !important;
+    background: #0f596b !important;
 }
 
 .datepicker .datepicker-days .day.new {
@@ -387,7 +387,7 @@ form .form-section-title {
 }
 
 .box:nth-child(even) {
-    border-top: 3px solid #db0606;
+    border-top: 3px solid #0f596b;
 }
 
 .box .box-header {
@@ -527,7 +527,7 @@ table tbody tr td, .table tbody tr td {
     display: block;
     border: 1px solid #f3f3f3;
     padding: 3px 10px;
-    color: #002339;
+    color: #001127;
     font-size: 13px;
     text-decoration: none;
 }
@@ -537,13 +537,13 @@ table tbody tr td, .table tbody tr td {
 }
 
 .pagination ul li.page-first a, .pagination ul li.page-last a {
-    color: #db0606;
+    color: #0f596b;
 }
 
 .pagination ul li.active a {
-    background-color: #db0606;
+    background-color: #0f596b;
     color: #ffffff;
-    border-color: #db0606;
+    border-color: #0f596b;
 }
 
 .pagination ul li.disable-link a {
@@ -552,7 +552,7 @@ table tbody tr td, .table tbody tr td {
 }
 
 .header {
-    background-color: #db0606;
+    background-color: #0f596b;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -704,7 +704,7 @@ main {
 
 main .main-navigation {
     border-right: 1px solid #f3f3f3;
-    background: #002339;
+    background: #001127;
     width: 250px;
     -webkit-transition: 200ms;
     transition: 200ms;
@@ -802,11 +802,11 @@ main .main-navigation .navigation li.treeview .treeview-menu li a i.bx {
 }
 
 main .main-navigation .navigation li.treeview .treeview-menu li.active a {
-    color: #db0606;
+    color: #0f596b;
 }
 
 main .main-navigation .navigation li.treeview.nav-open a {
-    color: #db0606;
+    color: #0f596b;
 }
 
 main .main-navigation .navigation li.treeview.nav-open::after {
@@ -814,11 +814,11 @@ main .main-navigation .navigation li.treeview.nav-open::after {
     transform: rotate(180deg);
     -webkit-transition: 200ms;
     transition: 200ms;
-    color: #db0606;
+    color: #0f596b;
 }
 
 main .main-navigation .navigation li.active a {
-    color: #db0606;
+    color: #0f596b;
 }
 
 main .main-content {
@@ -858,7 +858,7 @@ main.mini-nav .main-content {
 .package-input label {
     font-weight: 500;
     cursor: pointer;
-    color: #002339;
+    color: #001127;
 }
 
 .package-categories {

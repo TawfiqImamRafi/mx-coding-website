@@ -70,10 +70,13 @@
         <div class="row align-items-center" style="height: 250px;">
             <div class="col-12 col-md-6">
                 <h3 class="text-white">Ready to get started</h3>
-                <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
+                <small class="text-white">Sign up to our newsletter and get all the information about our work.</small>
                 <div class="position-relative w-100 mt-3">
-                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                    <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                    <form action="{{ route('newsletter.submit') }}" method="post">
+                        @csrf
+                    <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="email" name="email" placeholder="Enter Your Email" style="height: 48px;">
+                    <button type="submit" onclick="formSubmit(this, event)" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6 text-center mb-n5 d-none d-md-block">
@@ -103,7 +106,7 @@
                             </div>
                             <h5 class="mb-3">{{ $item->title }}</h5>
                             <p>{{ $item->short_description }}</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                            <a class="btn px-3 mt-auto mx-auto" href="{{ route('service-details',$item->slug) }}">Read More</a>
                         </div>
                     </div>
                     @endforeach
@@ -140,7 +143,7 @@
                     <img class="img-fluid w-100" src="{{ asset($item->image)}}" alt="">
                     <div class="portfolio-overlay">
                         {{-- <a class="btn btn-light" href="img/portfolio-1.jpg')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a> --}}
-                        <a class="mt-auto" href="#">
+                        <a class="mt-auto" href="{{ route('course-details',$item->slug) }}">
                             <h5 class="text-white"><i class="fa fa-folder me-2"></i>{{ $item->title }}</h5>
                             <small class="text-white">{{ $item->short_description }}</small>
                             {{-- <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> --}}

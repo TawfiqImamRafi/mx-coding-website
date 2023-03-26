@@ -60,7 +60,7 @@
                             </div>
                             <h5 class="mb-3">{{ $item->title }}</h5>
                             <p>{{ $item->short_description }}</p>
-                            <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
+                            <a class="btn px-3 mt-auto mx-auto" href="{{ route('service-details',$item->slug) }}">Read More</a>
                         </div>
                     </div>
                     @endforeach

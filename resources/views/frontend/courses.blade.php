@@ -67,7 +67,7 @@
                     <img class="img-fluid w-100" src="{{ asset($item->image)}}" alt="">
                     <div class="portfolio-overlay">
                         {{-- <a class="btn btn-light" href="img/portfolio-1.jpg')}}" data-lightbox="portfolio"><i class="fa fa-plus fa-2x text-primary"></i></a> --}}
-                        <a class="mt-auto" href="#">
+                        <a class="mt-auto" href="{{ route('course-details',$item->slug) }}">
                             <h5 class="text-white"><i class="fa fa-folder me-2"></i>{{ $item->title }}</h5>
                             <small class="text-white">{{ $item->short_description }}</small>
                             {{-- <a class="h5 d-block text-white mt-1 mb-0" href="">Project Name</a> --}}

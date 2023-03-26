@@ -18,8 +18,12 @@ Route::get('/privacy-policy','App\Http\Controllers\FrontendController@privacy')-
 Route::get('/terms-condition','App\Http\Controllers\FrontendController@terms')->name('terms');
 Route::get('/about-us','App\Http\Controllers\FrontendController@about')->name('about-us');
 Route::get('/services','App\Http\Controllers\FrontendController@services')->name('services');
+Route::get('/service/{slug}','App\Http\Controllers\FrontendController@serviceDetails')->name('service-details');
 Route::get('/courses','App\Http\Controllers\FrontendController@courses')->name('courses');
+Route::get('/course/{slug}','App\Http\Controllers\FrontendController@courseDetails')->name('course-details');
 Route::get('/contact','App\Http\Controllers\FrontendController@contact')->name('contact');
+Route::post('/contact/submit','App\Http\Controllers\FrontendController@contactStore')->name('contact.submit');
+Route::post('/newsletter/submit','App\Http\Controllers\FrontendController@newsletterStore')->name('newsletter.submit');
 Route::get('locale/{locale}','App\Http\Controllers\FrontendController@switch');
 
 Route::get('/admin', function () {
@@ -68,6 +72,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
     $router->group(['prefix' => 'settings', 'as' => 'settings.'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\SiteSettingsController::class, 'index'])->name('index');
         $router->post('/store', [App\Http\Controllers\Admin\SiteSettingsController::class, 'store'])->name('store');
+    });
+
+    $router->group(['prefix' => 'subscribers', 'as' => 'subscribers.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\NewsletterController::class, 'index'])->name('index');
     });
 
     $router->group(['prefix' => 'service', 'as' => 'service.'], function ($router) {
