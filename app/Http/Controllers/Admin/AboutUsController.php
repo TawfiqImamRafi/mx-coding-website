@@ -34,12 +34,12 @@ class AboutUsController extends Controller
     {
         $rules = [
             'content' => 'required',
-            'image' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
 
         $about_us = Page::where(['type' => 'about_us'])->first();
+        $path = $about_us->image;
         if ($request->has('image')) {
             if (isset($about_us) && $about_us->image) {
                 unlink($about_us->image);

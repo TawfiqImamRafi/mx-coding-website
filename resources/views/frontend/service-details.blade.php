@@ -51,7 +51,7 @@
                     <h6 class="position-relative text-primary ps-4">Service Details</h6>
                     <h2 class="mt-2">{{ $service?$service->title:'' }}</h2>
                 </div>
-                <p class="mb-4">{!! $service?$service->description:'' !!}</p>
+                <div class="mb-4">{!! $service?$service->description:'' !!}</div>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="{{ $service?asset($service->image):'' }}">

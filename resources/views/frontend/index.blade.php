@@ -7,7 +7,7 @@
             <div class="row g-5 py-5">
                 <div class="col-lg-6 text-center text-lg-start">
                     <h1 class="text-white mb-4 animated zoomIn">{{ $home?$home->title:'' }}</h1>
-                    <p class="text-white pb-3 animated zoomIn">{!! $home?$home->content:'' !!}</p>
+                    <div class="text-white pb-3 animated zoomIn">{!! $home?$home->content:'' !!}</div>
                     {{-- <a href="" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Free Quote</a> --}}
                     <a href="{{ route('contact') }}" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                 </div>
@@ -47,7 +47,7 @@
                     <h6 class="position-relative text-primary ps-4">About Us</h6>
                     <h2 class="mt-2">{{ $about?$about->title:'' }}</h2>
                 </div>
-                <p class="mb-4">{!! $about?Str::limit($about->content, 400, ' ...'):'' !!}</p>
+                <div class="mb-4">{!! $about?Str::limit($about->content, 400, ' ...'):'' !!}</div>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="{{ $about?asset($about->image):'' }}">

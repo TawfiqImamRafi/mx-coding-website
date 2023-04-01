@@ -34,12 +34,12 @@ class TermsConditionController extends Controller
     {
         $rules = [
             'content' => 'required',
-            'image' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
 
         $terms_condition = Page::where(['type' => 'terms_condition'])->first();
+        $path = $terms_condition->image;
         if ($request->has('image')) {
             if (isset($terms_condition) && $terms_condition->image) {
                 unlink($terms_condition->image);

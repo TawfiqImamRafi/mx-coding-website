@@ -34,12 +34,11 @@ class HomeController extends Controller
     {
         $rules = [
             'content' => 'required',
-            'image' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
-
         $home = Page::where(['type' => 'home'])->first();
+        $path = $home->image;
         if ($request->has('image')) {
             if (isset($home) && $home->image) {
                 unlink($home->image);

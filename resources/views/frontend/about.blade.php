@@ -51,7 +51,7 @@
                     <h6 class="position-relative text-primary ps-4">About Us</h6>
                     <h2 class="mt-2">{{ $data?$data->title:'' }}</h2>
                 </div>
-                <p class="mb-4">{!! $data?$data->content:'' !!}</p>
+                <div class="mb-4">{!! $data?$data->content:'' !!}</div>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid wow zoomIn" data-wow-delay="0.5s" src="{{ $data?asset($data->image):'' }}">

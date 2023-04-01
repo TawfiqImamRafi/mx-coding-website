@@ -33,11 +33,20 @@ class SiteSettingsController extends Controller
     public function store(Request $request)
     {
         $site_settings = SiteSettings::where(['type' => 'site_settings'])->first();
+        $path = $site_settings->logo;
+        $site_settings = SiteSettings::where(['type' => 'site_settings'])->first();
+        $path2 = $site_settings->logo_scroll;
         if ($request->has('logo')) {
             if (isset($site_settings) && $site_settings->logo) {
                 unlink($site_settings->logo);
             }
             $path = Helpers::file_upload($request,'logo','site_settings');
+        }
+        if ($request->has('logo_scroll')) {
+            if (isset($site_settings) && $site_settings->logo_scroll) {
+                unlink($site_settings->logo_scroll);
+            }
+            $path2 = Helpers::file_upload($request,'logo_scroll','site_settings');
         }
 
         DB::table('site_settings')->updateOrInsert(['type' => 'site_settings'], [
@@ -52,6 +61,7 @@ class SiteSettingsController extends Controller
             'footer_text' => $request->get('footer_text'),
             'footer_link' => $request->get('footer_link'),
             'logo' => $path,
+            'logo_scroll' => $path2,
         ]);
 
         return response()->json([

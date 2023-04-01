@@ -1,9 +1,10 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="m-0"><i class="fa fa-search me-2"></i>SEO<span class="fs-5">Master</span></h1>
-                    <!-- <img src="{{ asset('assets/frontend/img/logo.png')}}" alt="Logo"> -->
+                <a href="{{ route('home') }}" class="navbar-brand p-0">
+                    {{-- <h1 class="m-0"><i class="fa fa-search me-2"></i>SEO<span class="fs-5">Master</span></h1> --}}
+                    <img id="logo-1" src="{{ $settings ?asset($settings->logo) : '' }}" alt="Logo">
+                    <img id="logo-2" src="{{ $settings ?asset($settings->logo_scroll) : '' }}" alt="Logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>

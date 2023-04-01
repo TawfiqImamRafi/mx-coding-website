@@ -10,7 +10,7 @@
         <div class="box-body">
             <div class="form-group" style="margin-bottom:0%;">
             </div>
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="" class="col-md-3 col-form-label"></label>
                 <div class="col-md-9">
                     <center>
@@ -25,11 +25,9 @@
                         <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
                         <label class="custom-file-label" for="customFileEg1">Choose Image</label>
-                    </div>
-                    {{-- <input type="file" name="image" id="" placeholder="Enter image" class="form-control"> --}}
                     <span class="text-danger">{{ $errors->first('image') }}</span>
                 </div>
-            </div>
+            </div> --}}
             <div class="form-group row">
                 <label for="" class="col-md-3 col-form-label">Content</label>
                 <div class="col-md-9">

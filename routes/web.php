@@ -78,6 +78,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\NewsletterController::class, 'index'])->name('index');
     });
 
+    $router->group(['prefix' => 'messages', 'as' => 'messages.'], function ($router) {
+        $router->get('/', [App\Http\Controllers\Admin\MessageController::class, 'index'])->name('index');
+    });
+
     $router->group(['prefix' => 'service', 'as' => 'service.'], function ($router) {
         $router->get('/', [App\Http\Controllers\Admin\ServiceController::class, 'index'])->name('list');
         $router->get('/create', [App\Http\Controllers\Admin\ServiceController::class, 'create'])->name('create');

@@ -11,6 +11,6 @@
         </div>
     </div>
     <div class="container-xxl py-5">
-        <p>{!! $data?$data->content:'' !!}</p>
+        <div>{!! $data?$data->content:'' !!}</div>
     </div>
 @endsection

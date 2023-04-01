@@ -34,12 +34,12 @@ class PrivacyPolicyController extends Controller
     {
         $rules = [
             'content' => 'required',
-            'image' => 'required',
         ];
         //validation
         $this->validate($request, $rules);
 
         $privacy_policy = Page::where(['type' => 'privacy_policy'])->first();
+        $path = $privacy_policy->image;
         if ($request->has('image')) {
             if (isset($privacy_policy) && $privacy_policy->image) {
                 unlink($privacy_policy->image);
