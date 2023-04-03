@@ -1035,3 +1035,15 @@ main.mini-nav .main-content {
         transition: none
     }
 }
+
+main .main-navigation .navigation li.active a {
+    color: #31a97f;
+}
+
+main .main-navigation .navigation li.treeview.nav-open a {
+    color: #31a97f;
+}
+
+main .main-navigation .navigation li.treeview .treeview-menu li.active a {
+    color: #31a97f;
+}

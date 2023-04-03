@@ -11,14 +11,14 @@
         </div>
         <div class="header-right">
             <div class="header-nav">
-                Dashboard
+                {{-- Dashboard --}}
             </div>
             <div class="header-user">
                 <ul>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button class="btn-outline-light btn btn-sm" type="submit"><i class="bx bx-log-out"></i> Logout ({{ Auth::user()->name }})</button>
+                            <button class="btn-light btn btn-sm" type="submit"><i class="bx bx-log-out"></i> Logout ({{ Auth::user()->name }})</button>
                         </form>
                     </li>
                 </ul>

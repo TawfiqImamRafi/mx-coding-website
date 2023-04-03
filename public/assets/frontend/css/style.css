@@ -148,7 +148,7 @@ h6,
         border-bottom: 1px solid rgba(256, 256, 256, .1);
         z-index: 999;
     }
-    
+
     .sticky-top.navbar-light {
         position: fixed;
         background: #FFFFFF;
@@ -522,4 +522,13 @@ h6,
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 5rem !important;
+}
+
+.py0 {
+    padding-bottom: 0rem !important;
 }

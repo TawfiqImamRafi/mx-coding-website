@@ -20,7 +20,7 @@ class Controller extends BaseController
         $this->data = [
             'page_title' => 'Mx-Coding',
             'page_header' => 'Mx-Coding',
-            'course_footers' => Course::limit(6)->get(),
+            'course_footers' => Course::latest()->limit(5)->get(),
             'settings' => SiteSettings::first(),
         ];
     }
