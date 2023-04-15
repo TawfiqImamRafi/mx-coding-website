@@ -18,14 +18,14 @@ class UserTableSeeder extends Seeder
         // Super Admin
         $superAdmin = new User();
         $superAdmin->name = 'Super Admin';
-        $superAdmin->email = 'superadmin@tea.dev';
+        $superAdmin->email = 'superadmin@mx.dev';
         $superAdmin->password = bcrypt('password');
         $superAdmin->save();
 
         // Admin
         $admin = new User();
         $admin->name = 'Admin';
-        $admin->email = 'admin@tea.dev';
+        $admin->email = 'admin@mx.dev';
         $admin->password = bcrypt('password');
         $admin->save();
     }
